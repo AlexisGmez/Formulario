@@ -11,7 +11,7 @@ const defaultValues={
 }
 const FormUsers = ( { createUser,userUpdate,updateUser,handleChangeShowModal } ) => {
 
-  const {handleSubmit,register,reset} =useForm();  
+  const {handleSubmit,register,reset, formState: {errors}} =useForm();  
 
 
 
@@ -49,7 +49,6 @@ const FormUsers = ( { createUser,userUpdate,updateUser,handleChangeShowModal } )
 
   },[userUpdate]);
 
-  
 
   return (
     <form className='form' onSubmit={ handleSubmit(submitForm) }>
@@ -57,7 +56,10 @@ const FormUsers = ( { createUser,userUpdate,updateUser,handleChangeShowModal } )
       <h2 className='form__title'>{ userUpdate ? 'Edit User' : 'Create User'}</h2>
       <div className='form__div'>
         <label className='form__label' htmlFor="">email</label>
-        <input className='form__input' type="email" { ...register('email')}/>
+        <input className='form__input' type="text" { ...register('email')}/>
+        {
+          errors.email &&  <p>{errors.email.message}</p>
+        }
       </div>
       <div className='form__div'>
         <label className='form__label' htmlFor="">password</label>
@@ -70,6 +72,7 @@ const FormUsers = ( { createUser,userUpdate,updateUser,handleChangeShowModal } )
       <div className='form__div'>
         <label className='form__label' htmlFor="">last name</label>
         <input className='form__input' type="text" { ...register('last_name')}/>
+
       </div>
       <div className='form__div'>
         <label className='form__label' htmlFor="">birthday</label>

@@ -4,7 +4,7 @@ import './App.scss'
 import FormUsers from './components/FormUsers';
 import UserCard from './components/UserCard';
 import Swal from 'sweetalert2';
-const BASE_URL ='http://users-crud.academlo.tech/';
+const BASE_URL ='https://users-crud.academlo.tech/';
 function App() {
 
   const [users, setUsers] = useState();
